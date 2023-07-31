@@ -6,14 +6,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
-/* 
- */
 public class FileRead implements Runnable{
     private static synchronized void calculateWordFrequency(File file) throws IOException {
         Thread th = Thread.currentThread();
        // AtomicInteger freqCount = new AtomicInteger();
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String line = reader.readLine();
+        //We can use ConcurrentHashMap instead. Benefits explained in readme.
         HashMap<String, Integer> frequency = new HashMap<>();
         // We can put below code in synchronized block where the compound operation is performed
         while(line != null){
